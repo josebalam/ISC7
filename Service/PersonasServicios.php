@@ -1,15 +1,18 @@
-<?php
+<?php 
 
-class Categoria{
+class PersonaServicio {
 
-	public function insert($objeto) {
+
+	/**
+	 * Insertar
+	 */
+	public function insertar($objeto) {
 
 		// abrir conexión BD
 		$conexion = new Conexion();
 
 		// generar SQL del DAO
-		$sql = "INSERT INTO " . $this->tabla . " (usuario, password, direccion) VALUES ('{$objeto->id_categoria}','{$objeto->status}','{$objeto->fecha_creacion}')";
-		$sql = $dao->insert($objeto);
+		$sql =  "INSERT INTO " sthis->tabla."(id_persona,direccion,cumpleaños,telefono,estatus,fechaDeCreacion);"
 
 		// ejectuar consulta
 		mysqli_query($conexion->obtener(), $sql);
@@ -21,16 +24,15 @@ class Categoria{
 
 
 	/**
-	 * Find by ID
+	 * Obtener por ID
 	 */
-	public function findByID($id) {
+	public function ObtenerPorID($id) {
 
 		// abrir conexión BD
 		$conexion = new Conexion();
 
 		// generar SQL del DAO
-		$sql = "SELECT * FROM " . $this->tabla . " WHERE id={$id_categoria}";
-		$sql = $dao->findByID($id);
+		$sql =  "SELECT * FROM " sthis->tabla."(id_persona,direccion,cumpleaños,telefono,estatus,fechaDeCreacion);"
 
 		// ejectuar consulta
 		$consulta = mysqli_query($conexion->obtener(), $sql);
@@ -44,16 +46,15 @@ class Categoria{
 
 
 	/**
-	 * Find All
+	 * Obtener Todos
 	 */
-	public function findAll() {
+	public function ObtenerTodos() {
 
 		// abrir conexión BD
 		$conexion = new Conexion();
 
 		// generar SQL del DAO
-		$sql = "SELECT * FROM " . $this->tabla;
-		$sql = $dao->findAll($id);
+		$sql =  "SELECT * FROM " sthis->tabla."(id_persona,direccion,cumpleaños,telefono,estatus,fechaDeCreacion);"
 
 		// ejectuar consulta
 		$consulta = mysqli_query($conexion->obtener(), $sql);
@@ -72,16 +73,15 @@ class Categoria{
 
 
 	/**
-	 * Delete
+	 * Eliminar
 	 */
-	public function delete($id) {
+	public function Eliminar($id) {
 
 		// abrir conexión BD
 		$conexion = new Conexion();
 
 		// generar SQL del DAO
-		$sql = "DELETE FROM " . $this->tabla . " WHERE id={$id_categoria}";
-		$sql = $dao->delete($id);
+		$sql =  "DELETE " sthis->tabla."(id_persona,direccion,cumpleaños,telefono,estatus,fechaDeCreacion);"
 
 		mysqli_query($conexion->obtener(), $sql);
 
@@ -100,8 +100,7 @@ class Categoria{
 		$conexion = new Conexion();
 
 		// generar SQL del DAO
-		$sql = "UPDATE " . $this->tabla . " SET usuario='{$objeto->id_categoria}', password='{$objeto->status}', direccion='{$objeto->fecha_creacion}' WHERE id={$objeto->id_categoria}";
-		$sql = $dao->update($objeto);
+		$sql =  "UP DATE " sthis->tabla."(id_persona,direccion,cumpleaños,telefono,estatus,fechaDeCreacion);"
 
 		// ejectuar consulta
 		mysqli_query($conexion->obtener(), $sql);
@@ -110,6 +109,25 @@ class Categoria{
 		$conexion->cerrar();
 
 	}
+	/**
+	 * Obtener por Nombre
+	 */
+	public function ObtenerPorNombre($id) {
+
+		// abrir conexión BD
+		$conexion = new Conexion();
+
+		// generar SQL del DAO
+		$sql =  "SELECT * FROM " sthis->tabla."(id_persona,direccion,cumpleaños,telefono,estatus,fechaDeCreacion);"
+
+		// ejectuar consulta
+		$consulta = mysqli_query($conexion->obtener(), $sql);
+
+		// cerrar conexión BD
+		$conexion->cerrar();
+
+		return mysqli_fetch_object($consulta);
+
+	}
 
 }
-?>
